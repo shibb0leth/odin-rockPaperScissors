@@ -26,9 +26,6 @@ function getPlayerChoice() {
 
 
 function playRound (playerSelection, computerSelection) {
-    userScore = 0; 
-    computerScore = 0;
-
     playerSelection = getPlayerChoice()
     computerSelection = getComputerChoice()
 
@@ -38,31 +35,46 @@ function playRound (playerSelection, computerSelection) {
     }
     if (playerSelection === 'rock') {
         if (computerSelection === 'scissors') {
-            console.log("Player wins!")
+            console.log("Rock beats scissors! Player wins!")
             return userScore++;
         } else {
-            console.log("Computer wins!")
+            console.log("Paper beats rock! Computer wins!")
             return computerScore++;
         }
     }
     if (playerSelection === 'paper') {
         if (computerSelection === 'rock') {
-            console.log("Player wins!")
+            console.log("Paper beats rock! Player wins!")
             return userScore++;
         } else {
-            console.log("Computer wins!")
+            console.log("Scissors beats paper! Computer wins!")
             return computerScore++;
         }
     }
     if (playerSelection === 'scissors') {
         if (computerSelection === 'paper') {
-            console.log("Player wins!")
+            console.log("Scissors beats paper! Player wins!")
             return userScore++;
         } else {
-            console.log("Computer wins!")
+            console.log("Rock beats scissors! Computer wins!")
             return computerScore++;
         }
     }
 }
 
-playRound()
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound()
+    }
+
+    if (userScore >= 3) {
+        console.log("Congratulations player! You have defeated your mechanical opponent and proven yourself superior!");
+    } else {
+        console.log("You couldn't beat a computer at rock, paper, scissors? You are a disgrace!")
+    }
+}
+
+let userScore = 0;
+let computerScore = 0;
+
+game()
